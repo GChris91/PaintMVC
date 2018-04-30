@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,6 +23,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    Stage window;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -29,15 +32,20 @@ public class Main extends Application {
 
 //                  ======= STAGE =======
 
-        primaryStage.setTitle("PaintMVC in JavaFX");
+        window = primaryStage;
+        window.setTitle("PaintMVC in JavaFX");
+        window.setOnCloseRequest(e -> {
+            e.consume();
+            closeProgram();
+        });
 
 
 //                  ======= SCENE =======
 
         BorderPane layout  = new BorderPane();
         Scene scene = new Scene(layout, 800, 600, Color.WHITE);
-        primaryStage.show();
-        primaryStage.setScene(scene);
+        window.show();
+        window.setScene(scene);
 
         VBox topContainer = new VBox();
         MenuBar menuBar = new MenuBar();
@@ -57,9 +65,7 @@ public class Main extends Application {
         MenuItem close = new MenuItem("Fermer");
         MenuItem quitter = new MenuItem("Quitter");
 
-        quitter.setOnAction(e -> {
-            boolean confirmation = ConfirmBox.display("Quitter", "Voulez-vous vraiment quitter PaintMVC?");
-        });
+        quitter.setOnAction(e -> closeProgram());
 
 
 
@@ -181,6 +187,16 @@ public class Main extends Application {
 
     }
 
+
+
+//                  ======= FILES FUNCTIONS =======
+
+    private void closeProgram(){
+        Boolean confirmation = ConfirmBox.display("Quitter", "Voulez-vous vraiment quitter PaintMVC?");
+        if(confirmation) {
+            window.close();
+        }
+    }
 
 //                  ======= END ======
 
