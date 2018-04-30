@@ -57,6 +57,11 @@ public class Main extends Application {
         MenuItem close = new MenuItem("Fermer");
         MenuItem quitter = new MenuItem("Quitter");
 
+        quitter.setOnAction(e -> {
+            boolean confirmation = ConfirmBox.display("Quitter", "Voulez-vous vraiment quitter PaintMVC?");
+        });
+
+
 
         menuBar.getMenus().add(file);
         file.getItems().addAll(openFile, save, saveUnder, close, quitter);
@@ -81,9 +86,6 @@ public class Main extends Application {
         Image imgLineSmall = new Image(getClass().getResourceAsStream("Icones/LineSmall.png"));
         lineSmall.setGraphic(new ImageView(imgLineSmall));
         //lineSmall.setOnAction(e -> System.out.println("Hello World"));
-        lineSmall.setOnAction(e -> {
-            boolean confirmation = ConfirmBox.display("Quitter", "Voulez-vous vraiment quitter PaintMVC?");
-        });
 
         ToggleButton lineMed = new ToggleButton();
         Image imgLineMed = new Image(getClass().getResourceAsStream("Icones/LineMed.png"));
