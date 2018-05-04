@@ -1,11 +1,15 @@
 package sample;
 
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 
 public class Controller {
     View vue;
     Model mod;
+
     public Controller(View v, Model m) {
         this.vue = v;
         this.mod = m;
@@ -45,16 +49,16 @@ public class Controller {
                     vue.getGc().setStroke(vue.getColorOut().getValue());
                     vue.getGc().setFill(vue.getColorIn().getValue());
                     vue.getEllipse().setCenterX(mouseEvent.getX());
-                    //vue.getCercle().setCenterX(mouseEvent.getX());
                     vue.getEllipse().setCenterY(mouseEvent.getY());
-                    //vue.getCercle().setCenterY(mouseEvent.getY());
+                    vue.getCercle().setCenterX(mouseEvent.getX());
+                    vue.getCercle().setCenterY(mouseEvent.getY());
                 }
                 else if(vue.getEllipseIn().isSelected()) {
                     vue.getGc().setFill(vue.getColorIn().getValue());
                     vue.getEllipse().setCenterX(mouseEvent.getX());
-                    //vue.getCercle().setCenterX(mouseEvent.getX());
                     vue.getEllipse().setCenterY(mouseEvent.getY());
-                    //vue.getCercle().setCenterY(mouseEvent.getY());
+                    vue.getCercle().setCenterX(mouseEvent.getX());
+                    vue.getCercle().setCenterY(mouseEvent.getY());
                 }
             }
         });
@@ -117,10 +121,9 @@ public class Controller {
 
                 vue.getGc().strokeOval(vue.getEllipse().getCenterX(), vue.getEllipse().getCenterY(), vue.getEllipse().getRadiusX(), vue.getEllipse().getRadiusY());
 
-            }/*
-            else if (vue.getEllipseOut().isSelected() && e.isControlDown()){
-                vue.getCercle().setRadiusX(Math.abs(e.getX() - vue.getCercle().getCenterX()))
-                vue.getCercle().setRadiusY(Math.abs(e.getY() - vue.getCercle().getCenterY()));
+            }
+            else if(vue.getEllipseOut().isSelected() && e.isControlDown()){
+                vue.getCercle().setRadius((Math.abs(e.getX() - vue.getCercle().getCenterX()) + Math.abs(e.getY() - vue.getCercle().getCenterY())) / 2);
 
                 if(vue.getCercle().getCenterX() > e.getX()) {
                     vue.getCercle().setCenterX(e.getX());
@@ -129,9 +132,8 @@ public class Controller {
                     vue.getCercle().setCenterY(e.getY());
                 }
 
-                vue.getGc().strokeCercle(vue.getCercle().getCenterX(), vue.getCercle().getCenterY(), vue.getCercle().getRadiusX(), vue.getCercle().getRadiusY());
-                vue.getGc().fillCercle(vue.getCercle().getCenterX(), vue.getCercle().getCenterY(), vue.getCercle().getRadiusX(), vue.getCercle().getRadiusY());
-            }*/
+                vue.getGc().strokeOval(vue.getCercle().getCenterX(), vue.getCercle().getCenterY(), vue.getCercle().getRadius(), vue.getCercle().getRadius());
+            }
             else if(vue.getEllipseIn().isSelected()) {
                 vue.getEllipse().setRadiusX(Math.abs(e.getX() - vue.getEllipse().getCenterX()));
                 vue.getEllipse().setRadiusY(Math.abs(e.getY() - vue.getEllipse().getCenterY()));
