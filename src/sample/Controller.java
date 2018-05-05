@@ -68,6 +68,18 @@ public class Controller {
                 vue.getGc().lineTo(e.getX(), e.getY());
                 vue.getGc().stroke();
             }
+            else if(vue.getEllipseOut().isSelected() && e.isControlDown()){
+                vue.getCercle().setRadius((Math.abs(e.getX() - vue.getCercle().getCenterX()) + Math.abs(e.getY() - vue.getCercle().getCenterY())) / 2);
+
+                if(vue.getCercle().getCenterX() > e.getX()) {
+                    vue.getCercle().setCenterX(e.getX());
+                }
+                if(vue.getCercle().getCenterY() > e.getY()) {
+                    vue.getCercle().setCenterY(e.getY());
+                }
+
+                vue.getGc().strokeOval(vue.getCercle().getCenterX(), vue.getCercle().getCenterY(), vue.getCercle().getRadius(), vue.getCercle().getRadius());
+            }
         });
 
         vue.getCanvas().setOnMouseReleased(e->{
@@ -122,18 +134,7 @@ public class Controller {
                 vue.getGc().strokeOval(vue.getEllipse().getCenterX(), vue.getEllipse().getCenterY(), vue.getEllipse().getRadiusX(), vue.getEllipse().getRadiusY());
 
             }
-            else if(vue.getEllipseOut().isSelected() && e.isControlDown()){
-                vue.getCercle().setRadius((Math.abs(e.getX() - vue.getCercle().getCenterX()) + Math.abs(e.getY() - vue.getCercle().getCenterY())) / 2);
 
-                if(vue.getCercle().getCenterX() > e.getX()) {
-                    vue.getCercle().setCenterX(e.getX());
-                }
-                if(vue.getCercle().getCenterY() > e.getY()) {
-                    vue.getCercle().setCenterY(e.getY());
-                }
-
-                vue.getGc().strokeOval(vue.getCercle().getCenterX(), vue.getCercle().getCenterY(), vue.getCercle().getRadius(), vue.getCercle().getRadius());
-            }
             else if(vue.getEllipseIn().isSelected()) {
                 vue.getEllipse().setRadiusX(Math.abs(e.getX() - vue.getEllipse().getCenterX()));
                 vue.getEllipse().setRadiusY(Math.abs(e.getY() - vue.getEllipse().getCenterY()));
