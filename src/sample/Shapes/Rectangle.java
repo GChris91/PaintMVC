@@ -7,6 +7,8 @@ import javafx.scene.shape.Shape;
 
 public class Rectangle extends Shape {
 
+//Forme rectangle avec les propriétés de l'objet qu'on doit ensuite invoquer pour qu'il se dessinne lui même
+
     private double startX;
     private double startY;
 

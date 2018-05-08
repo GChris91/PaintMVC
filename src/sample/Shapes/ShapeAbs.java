@@ -17,6 +17,8 @@ private double greenFill,
 
 public Shape(double width, Color color, Color fill, boulean filled){
 
+// classe permettant de dessiner les classe. Contient les informations nécessaire (largeur, pleine ou pas, couleur...)
+
         this.widthShape = width;
         this.filled = fill;
 

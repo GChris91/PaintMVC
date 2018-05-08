@@ -11,6 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+// Utilisé pour confirmer l'exit par le menu ou par la croix. Qu'il n'y'ai pas d'exit random sans sauvegarde.
+
 public class ConfirmBox {
 
     static boolean confirmation;

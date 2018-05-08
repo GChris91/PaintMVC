@@ -6,6 +6,8 @@ import javafx.scene.paint.Color;
 
 public abstract class Shape {
 
+//Classe abstraite pour la forme premier jeté, plus trop opérationnelle
+
 
     private Color color;
 

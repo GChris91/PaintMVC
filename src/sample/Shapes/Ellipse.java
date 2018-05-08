@@ -5,6 +5,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
+//Fonction de dessin pour les cercles et ellipses.
+
 public class Ellipse extends Shape {
     private double startX;
     private double startY;

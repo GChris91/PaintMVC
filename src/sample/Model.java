@@ -5,6 +5,9 @@ import javafx.scene.shape.Shape;
 
 import java.util.List;
 
+//model à retravailler. La sérialisation à finir.
+//essais sur la prévisualisation toujours infructueux.
+
 public class Model {
 /*
     private List<ShapeAbs> shapes;

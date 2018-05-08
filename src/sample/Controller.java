@@ -1,15 +1,23 @@
 package sample;
 
+import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
+import javax.imageio.ImageIO;
+import java.io.File;
+
 public class Controller {
     View vue;
     Model mod;
 
+
+        // Initialisation du controller
     public Controller(View v, Model m) {
         this.vue = v;
         this.mod = m;
@@ -20,6 +28,7 @@ public class Controller {
 
     public void initListener() {
 
+        //Liste des listeners pour les inputs<
         vue.getCanvas().setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -63,6 +72,7 @@ public class Controller {
             }
         });
 
+        // Drag event pour les cercles et draw free
         vue.getCanvas().setOnMouseDragged(e->{
             if(vue.getDrawFree().isSelected()) {
                 vue.getGc().lineTo(e.getX(), e.getY());
@@ -81,6 +91,8 @@ public class Controller {
                 vue.getGc().strokeOval(vue.getCercle().getCenterX(), vue.getCercle().getCenterY(), vue.getCercle().getRadius(), vue.getCercle().getRadius());
             }
         });
+
+        // Lignes et formes
 
         vue.getCanvas().setOnMouseReleased(e->{
             if(vue.getDrawFree().isSelected()) {
@@ -153,5 +165,21 @@ public class Controller {
 
         });
 
+    }
+
+            // Fonction d'enregistrement du canvas
+    public void save(){
+        try{
+            Image snapshot = vue.getCanvas().snapshot(null, null);
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", new File("paintMVC.png"));
+        } catch (Exception e){
+            System.out.println("Erreur lors de la sauvegarde" + e);
+        }
+    }
+
+    //Fonction pour quitter basic
+
+    public void exit(){
+        Platform.exit();
     }
 }

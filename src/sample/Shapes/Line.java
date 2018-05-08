@@ -7,6 +7,8 @@ import javafx.scene.shape.Shape;
 
 public class Line extends Shape {
 
+// classe ligne pour les lignes et futur polygones
+
     private double startX;
     private double startY;
 
