@@ -1,3 +1,4 @@
+/*
 package sample;
 
 import javafx.geometry.Pos;
@@ -50,4 +51,4 @@ public class ConfirmBox {
 
         return confirmation;
     }
-}
+}*/

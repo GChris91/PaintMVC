@@ -1,3 +1,4 @@
+/*
 package sample.Shapes;
 
 public abstract ShapeAbs implements Shape {
@@ -30,3 +31,4 @@ public Shape(double width, Color color, Color fill, boulean filled){
         }
 
         }
+*/

@@ -1,3 +1,4 @@
+/*
 package sample.Shapes;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -61,3 +62,4 @@ public class Rectangle extends Shape {
 
 
 }
+*/

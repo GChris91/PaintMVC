@@ -1,3 +1,4 @@
+/*
 package sample.Shapes;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -56,3 +57,4 @@ public class Ellipse extends Shape {
     public void setRadius(double radius) {
         this.radius = radius;
     }
+    */
